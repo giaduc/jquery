@@ -29,7 +29,7 @@
     <!-- bootstrap table js -->
     <script src="js/bootstrap-table.js"></script>
     <script src="js/bootstrap-table-vi-VN.js"></script>
-    
+
 </head>
 
 <body>
@@ -56,120 +56,147 @@
         <!-- /.header -->
         <div class="row">
             <div class="col-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="create-report.html">Create report
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="add-project.html">Add project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="list-report.html">List report</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="report-detail.html">Report detail</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li class="nav-item">
-                        <div>
-                            <input id="datepicker" />
-                            <script>
-                                var currentDate = new Date().toLocaleDateString('en-US');
-                                $('#datepicker').datepicker({
-                                    value: currentDate
-                                });
-                            </script>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown-divider"></div>
-                    </li>
-                </ul>
-                <div class="row">
-                    <table class="table">
-                        <thead>
-                            <th>col-1</th>
-                            <th>col-2</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>row-1 col-1</td>
-                                <td><a href="#"><i class="fas fa-search"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>row-2 col-1</td>
-                                <td><a href="#"><i class="fas fa-search"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>row-3 col-1</td>
-                                <td><a href="#"><i class="fas fa-search"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>row-4 col-1</td>
-                                <td><a href="#"><i class="fas fa-search"></i></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="create-report.html">Create report
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="add-project.html">Add project</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="list-report.html">List report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="report-detail.html">Report detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="col">
+                                <input id="datepicker" />
+                                <script>
+                                    var currentDate = new Date().toLocaleDateString('en-US');
+                                    $('#datepicker').datepicker({
+                                        value: currentDate,
+                                        icons: {
+                                            rightIcon: '<i class="far fa-calendar-alt"></i>'
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <th>col-1</th>
+                                <th>col-2</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>row-1 col-1</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>row-2 col-1</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>row-3 col-1</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>row-4 col-1</td>
+                                    <td>
+                                        <a href="#">
+                                            <i class="fas fa-search"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!-- ./sidebar -->
             <div class="col-9">
-                <div class="row">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#report-form">
-                        Launch demo modal
-                    </button>
-                    <a href="#" type="button" data-toggle="modal" data-target="#report-form">Anchor</a>
-                </div>
-                <div class="modal fade" id="report-form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Create report</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="report-form">
-                                    <form>
-                                        <div class="report-form-body">
-                                            <div class="form-group row">
-                                                <label for="projectCode" class="col-3 col-form-label">Project code
-                                                </label>
-                                                <div class="col-9">
-                                                    <select id="projectCode" class="form-control" name="projectCode">
-                                                        <option>Choose...</option>
-                                                        <option>Project 1</option>
-                                                        <option>Project 2</option>
-                                                    </select>
-                                                </div>
+                <div class="report-form">
+                    <form>
+                        <div class="report-form-body">
+
+                            <div class="row">
+                                <div class="col-5">
+
+                                    <div class="form-group">
+                                        <label for="projectCode">Project code
+                                        </label>
+                                        <select id="projectCode" class="form-control" name="projectCode">
+                                            <option>Choose...</option>
+                                            <option>Project 1</option>
+                                            <option>Project 2</option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="timeWork">Time work</label>
+                                        <input type="number" class="form-control" id="timeWork" name="txt_timeWork" placeholder="Hour">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>Tasks</label>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <select id="taskCode" class="form-control" name="taskCode">
+                                                    <option>Choose...</option>
+                                                    <option>Task 1</option>
+                                                    <option>Task 2</option>
+                                                </select>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="timeWork" class="col-3 col-form-label">Time work</label>
-                                                <div class="col-9">
-                                                    <input type="number" class="form-control" id="timeWork" txt_timeWork>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="content" class="col-3 col-form-label">Note</label>
-                                                <div class="col-9">
-                                                    <textarea class="form-control" rows="" cols="" id="content" name="txt_note"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-12 text-center">
-                                                    <button class="btn btn-primary ">Report</button>
-                                                </div>
+                                            <div class="col-6">
+                                                <input type="number" class="form-control" id="taskTimeWork" placeholder="Hour">
                                             </div>
                                         </div>
-                                    </form>
+
+                                    </div>
+
+
+                                </div>
+                                <div class="col-7">
+                                    <div class="form-group">
+                                        <label for="content">Note</label>
+                                        <textarea class="form-control" rows="" cols="" id="content" name="txt_note"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <div class="form-group row">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-primary ">Report</button>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- ./create-report form -->

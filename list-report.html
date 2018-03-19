@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-table.css">
@@ -56,63 +56,121 @@
         <!-- /.header -->
         <div class="row">
             <div class="col-3">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="create-report.html">Create report
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="add-project.html">Add project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="list-report.html">List report</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="report-detail.html">Report detail</a>
-                    </li>
-                    <li class="nav-item">
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li class="nav-item">
-                        <div>
-                            <input id="datepicker" />
-                            <script>
-                                var currentDate = new Date().toLocaleDateString('en-US');
-                                $('#datepicker').datepicker({
-                                    value: currentDate
-                                });
-                            </script>
-                        </div>
-                    </li>
-                </ul>
+                <div class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="create-report.html">Create report
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="add-project.html">Add project</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="list-report.html">List report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="report-detail.html">Report detail</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="col">
+                                <input id="datepicker" />
+                                <script>
+                                    var currentDate = new Date().toLocaleDateString('en-US');
+                                    $('#datepicker').datepicker({
+                                        value: currentDate,
+                                        icons: {
+                                            rightIcon: '<i class="far fa-calendar-alt"></i>'
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <!-- ./sidebar -->
             <div class="col-9" id="report-list">
-                <table id="table" data-search="true" data-pagination="true" data-detail-view="true">
-                    <thead>
+                <table id="table" data-search="true" data-pagination="true" data-detail-view="true" class="report-table">
+                    <!-- <thead>
                         <tr>
-                            <th>Item ID</th>
-                            <th>Item Name</th>
-                            <th>Item Price</th>
+                            <th>Item</th>
+                            <th>Project</th>
+                            <th>Approver</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><i class="fas fa-check"></i></td>
-                            <td>Item 1</td>
-                            <td>$1</td>
+                            <td>
+                                <i class="fas fa-check text-success"></i>-
+                                <i class="fas fa-times text-danger"></i>
+                            </td>
+                            <td>ajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjsajldjsfljsdlfjdslfjdslfjs</td>
+                            <td>Leader</td>
+                            <td>
+                                <i class="fas fa-search"></i>-
+                                <i class="fas fa-edit"></i>
+                            </td>
                         </tr>
                         <tr>
-                            <td><i class="fas fa-check"></i></td>
+                            <td>
+                                <i class="fas fa-check text-success"></i>-
+                                <i class="fas fa-times text-danger"></i>
+                            </td>
                             <td>Item 2</td>
-                            <td>$2</td>
+                            <td>Manager</td>
+                            <td>
+                                <i class="fas fa-search"></i>-
+                                <i class="fas fa-edit"></i>
+                            </td>
                         </tr>
-                    </tbody>
+                    </tbody> -->
                 </table>
                 <script>
                     $('#table').bootstrapTable({
                         searchTimeOut: 0,
-                        align: 'center'
+                        align: 'center',
+                        columns: [
+                            { field: "col1", title: "Col 1" },
+                            { field: "col2", title: "Col 2" },
+                            { field: "col3", title: "Col 3" },
+                            { field: "col4", title: "Col 4" },
+                        ],
+                        data: [
+                            {
+                                col1: "something here",
+                                col2: "something here",
+                                col3: "something here",
+                                col4: "something here",
+                            },
+                            {
+                                col1: "something here",
+                                col2: "something here",
+                                col3: "something here",
+                                col4: "something here",
+                            },
+                            {
+                                col1: "something here",
+                                col2: "something here",
+                                col3: "something here",
+                                col4: "something here",
+                            },
+                            {
+                                col1: "something here",
+                                col2: "something here",
+                                col3: "something here",
+                                col4: "something here",
+                            },
+                            {
+                                col1: "something here",
+                                col2: "something here",
+                                col3: "something here",
+                                col4: "something here",
+                            },
+                        ]
                     });
                 </script>
             </div>

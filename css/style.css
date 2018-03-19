@@ -117,13 +117,6 @@ body {
     border-radius: 0 0 3px 3px;
 }
 
-.task-form {
-    border: 1px solid #d8dee2;
-    padding: 20px;
-    border-radius: 3px;
-    margin-bottom: 20px;
-}
-
 .report-table {
     table-layout: fixed;
     word-wrap: break-word;
@@ -131,4 +124,12 @@ body {
 
 .error-list {
     display: table-footer-group !important;
+}
+
+
+/* task-form */
+.task-form {
+    /* border: 1px solid #d8dee2; */
+    border-radius: 3px;
+    margin-bottom: 20px;
 }

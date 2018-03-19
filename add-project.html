@@ -104,27 +104,43 @@
                                 <label for="projectCode" class="col-sm-2 col-form-label">Project code
                                 </label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="txt_projectCode" id="projectCode" data-validation="[NOTEMPTY]" data-validation-message="Please enter project code.">
+                                    <input 
+                                    type="text" 
+                                    class="form-control" 
+                                    name="txt_projectCode" 
+                                    data-validation="[NOTEMPTY]" 
+                                    data-validation-message="Please enter project code.">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="txt_name" id="name" data-validation="[L>=6, NOTEMPTY]" data-validation-message="Please enter name. Name must be at least 6 characters">
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        name="txt_name" 
+                                        data-validation="[L>=6, NOTEMPTY]" 
+                                        data-validation-message="Please enter name. Name must be at least 6 characters">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="startAt" class="col-sm-2 col-form-label">Start at
                                 </label>
                                 <div class="col-sm-10">
-                                    <input id="startAt" name="txt_startAt" data-validation="[DATE_DATEPICKER]">
+                                    <input 
+                                        id="startAt" 
+                                        name="txt_startAt" 
+                                        data-validation="[DATE_DATEPICKER]">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="finishAt" class="col-sm-2 col-form-label">Finish at
                                 </label>
                                 <div class="col-sm-10">
-                                    <input id="finishAt" name="txt_finishAt" data-validation="[NOTEMPTY]" data-validation-message="Please enter finishAt.">
+                                    <input 
+                                        id="finishAt" 
+                                        name="txt_finishAt" 
+                                        data-validation="[DATE_DATEPICKER]">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -140,8 +156,9 @@
                                 $('#startAt').datepicker({
                                     uiLibrary: 'bootstrap',
                                     iconsLibrary: 'fontawesome',
+                                    format : 'dd/mm/yyyy',
                                     minDate: today,
-                                    // width: 200,
+                                    width: 300,
                                     maxDate: function () {
                                         return $('#finishAt').val();
                                     },
@@ -151,8 +168,9 @@
                                 });
                                 $('#finishAt').datepicker({
                                     uiLibrary: 'bootstrap',
+                                    format : 'dd/mm/yyyy',
                                     iconsLibrary: 'fontawesome',
-                                    // width: 200,
+                                    width: 300,
                                     minDate: function () {
                                         return $('#startAt').val();
                                     },
@@ -161,6 +179,13 @@
                                     }
                                 });
 
+
+                                $.alterValidationRules({
+                                    rule: 'DATE_DATEPICKER',
+                                    // regex: /^\d{2}\/\d{2}\/\d{4}$/,
+                                    regex: /^\s*(3[01]|[12][0-9]|0?[1-9])\/(1[012]|0?[1-9])\/((?:19|20)\d{2})\s*$/,
+                                    message: 'This field must use format DD/MM/YYYY to be valid.'
+                                });
                                 $.validate({
                                     submit: {
                                         settings: {
@@ -170,6 +195,7 @@
                                             allErrors: true,
                                             errorClass: 'is-invalid',
                                             errorListClass: 'invalid-feedback error-list',
+                                            inputContainer: '.form-group',
                                             display: 'inline',
                                         },
                                         callback: {
@@ -180,11 +206,7 @@
                                     }
                                 });
 
-                                $.alterValidationRules({
-                                    rule: 'DATE_DATEPICKER',
-                                    regex: /^\d{2}\/\d{2}\/\d{4}$/,
-                                    message: '$ date must use format MM/DD/YYYY to be valid.'
-                                });
+
                             </script>
                         </div>
                     </form>

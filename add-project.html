@@ -34,7 +34,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container">
         <nav class="navbar navbar-expand-lg header">
             <a class="navbar-brand" href="index.html">Daily report</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -55,6 +55,32 @@
             </div>
         </nav>
         <!-- /.header -->
+
+        <nav class="navbar navbar-expand-lg  border mb-3 bg-white">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Personal report
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Project managerment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Employees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tasks</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- /.menu -->
         <div class="row">
             <div class="col-3">
                 <div class="sidebar">
@@ -101,48 +127,46 @@
                     <form action="" method="post" id="addProjectForm">
                         <div class="project-form-body">
                             <div class="form-group row">
-                                <label for="projectCode" class="col-sm-2 col-form-label">Project code
+                                <label for="projectCode" class="col-2 col-form-label">Project code
                                 </label>
-                                <div class="col-sm-10">
-                                    <input 
-                                    type="text" 
-                                    class="form-control" 
-                                    name="txt_projectCode" 
-                                    data-validation="[NOTEMPTY]" 
-                                    data-validation-message="Please enter project code.">
+                                <div class="col-4">
+                                    <input type="text" class="form-control" name="txt_projectCode" data-validation="[NOTEMPTY]" data-validation-message="Please enter project code.">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="name" class="col-sm-2 col-form-label">Name</label>
-                                <div class="col-sm-10">
-                                    <input 
-                                        type="text" 
-                                        class="form-control" 
-                                        name="txt_name" 
-                                        data-validation="[L>=6, NOTEMPTY]" 
-                                        data-validation-message="Please enter name. Name must be at least 6 characters">
+                                <label for="name" class="col-2 col-form-label">Name</label>
+                                <div class="col-10">
+                                    <input type="text" class="form-control" name="txt_name" data-validation="[L>=6, NOTEMPTY]" data-validation-message="Please enter name. Name must be at least 6 characters">
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="startAt" class="col-sm-2 col-form-label">Start at
-                                </label>
-                                <div class="col-sm-10">
-                                    <input 
-                                        id="startAt" 
-                                        name="txt_startAt" 
-                                        data-validation="[DATE_DATEPICKER]">
+                                <label class="col-2 col-form-label">Project manager</label>
+                                <div class="col-4">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <button class="btn btn-default" type="button">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="finishAt" class="col-sm-2 col-form-label">Finish at
-                                </label>
-                                <div class="col-sm-10">
-                                    <input 
-                                        id="finishAt" 
-                                        name="txt_finishAt" 
-                                        data-validation="[DATE_DATEPICKER]">
+                                <div class="col-6">
+                                    <label for="startAt">Start at</label>
+                                    <input id="startAt" name="txt_startAt" data-validation="[DATE_DATEPICKER]">
+                                </div>
+                                <div class="col-6">
+                                    <label for="finishAt">Finish at</label>
+                                    <input id="finishAt" name="txt_finishAt" data-validation="[DATE_DATEPICKER]">
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-12 text-center">
                                     <button class="btn btn-primary" type="submit">Add project</button>
@@ -156,7 +180,7 @@
                                 $('#startAt').datepicker({
                                     uiLibrary: 'bootstrap',
                                     iconsLibrary: 'fontawesome',
-                                    format : 'dd/mm/yyyy',
+                                    format: 'dd/mm/yyyy',
                                     minDate: today,
                                     width: 300,
                                     maxDate: function () {
@@ -168,7 +192,7 @@
                                 });
                                 $('#finishAt').datepicker({
                                     uiLibrary: 'bootstrap',
-                                    format : 'dd/mm/yyyy',
+                                    format: 'dd/mm/yyyy',
                                     iconsLibrary: 'fontawesome',
                                     width: 300,
                                     minDate: function () {

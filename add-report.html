@@ -37,7 +37,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg header">
             <a class="navbar-brand" href="index.html">
-                <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="Daily report">
+                <img src="" width="30" height="30" alt="Daily report">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -61,28 +61,20 @@
             <div class="col-3">
                 <div class="sidebar">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="create-report.html">Create report
-                            </a>
-                            <div class="dropdown-divider"></div>
+                        <li class="nav-item p-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="add-project.html">Add project</a>
-                            <div class="dropdown-divider"></div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="list-report.html">List report</a>
-                            <div class="dropdown-divider"></div>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link active" href="report-detail.html">Report detail</a>
-                            <div class="dropdown-divider"></div>
-                        </li>
-                        <li class="nav-item">
-                            <div class="col">
+                        <li class="p-1">
+                            <div class="col-12 text-center mt-3">
                                 <input id="datepicker" />
                                 <script>
                                     var currentDate = new Date().toLocaleDateString('en-US');
@@ -96,48 +88,6 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <th>col-1</th>
-                                <th>col-2</th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>row-1 col-1</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>row-2 col-1</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>row-3 col-1</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>row-4 col-1</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
             <!-- ./sidebar -->

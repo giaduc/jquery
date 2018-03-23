@@ -87,7 +87,8 @@
             <div class="col-3">
                 <div class="sidebar p-1">
                     <div class="input-group">
-                        <input id="myInput" onkeyup="myFunction()" type="text" class="form-control">
+                        <!-- <input id="myInput" onkeyup="myFunction()" type="text" class="form-control"> -->
+                        <input id="myInput" type="text" class="form-control">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <button class="btn btn-default" type="button">
@@ -97,62 +98,36 @@
                         </div>
                     </div>
                     <ul id="task-list" class="list-group mt-1">
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item</a> -->
-                            List item
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item1</a> -->
-                            ist item1
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item2</a> -->
-                            ist item2
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item2</a> -->
-                            ist item2
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item3</a> -->
-                            ist item3
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item5</a> -->
-                            ist item5
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item6</a> -->
-                            ist item6
-                        </li>
-                        <li class="list-group-item">
-                            <!-- <a href="#">List item7</a> -->
-                            ist item7
-                        </li>
                     </ul>
                 </div>
             </div>
             <script>
-                function myFunction() {
-                    var input, filter, ul, li, a, i;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    ul = document.getElementById("task-list");
-                    li = ul.getElementsByTagName("li");
-                    $(li).removeClass("active");
-                    for (i = 0; i < li.length; i++) {
-                        // a = li[i].getElementsByTagName("a")[0];
-                        
-                        if (li[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            li[i].style.display = "";
+                $.getJSON('http://api.open-notify.org/astros.json', function (data) {
+                    $(data.people).each(function (key, value) {
+                        // console.log(key, value);
+                        $('#task-list').append(`
+                            <li class="list-group-item">
+                                ${value.name}
+                            </li>
+                        `);
+                    });
+                });
+
+                $("#myInput").keyup(function () {
+                    var filter, li;
+                    filter = $("#myInput").val().toUpperCase(); //get search input
+                    li = $("#task-list li");
+                    $(li).each(function (key, item) {
+                        if (item.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            item.style.display = "";
                             if (filter.length > 0) {
-                                $(li[i]).addClass("active");
                             }
                         } else {
-                            li[i].style.display = "none";
+                            item.style.display = "none"
                         }
-                    }
-                }
+                    });
+                });
+
             </script>
             <!-- ./sidebar -->
 

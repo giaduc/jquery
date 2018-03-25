@@ -85,49 +85,87 @@
         <!-- /.menu -->
         <div class="row">
             <div class="col-3">
-                <div class="sidebar p-1">
-                    <div class="input-group">
-                        <!-- <input id="myInput" onkeyup="myFunction()" type="text" class="form-control"> -->
-                        <input id="myInput" type="text" class="form-control">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fas fa-search"></i>
-                                </button>
+                <div class="sidebar">
+                    <ul class="nav flex-column">
+                        <li class="nav-item p-1">
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <ul id="task-list" class="list-group mt-1">
+                        </li>
+                        <li class="nav-item p-1">
+                            <table id="table" class="table">
+                                <!-- <tr>
+                                    <td>001</td>
+                                    <td>Task 1</td>
+                                </tr>
+                                <tr>
+                                    <td>002</td>
+                                    <td>Task 2</td>
+                                </tr>
+                                <tr>
+                                    <td>003</td>
+                                    <td>Task 3</td>
+                                </tr>
+                                <tr>
+                                    <td>004</td>
+                                    <td>Task 4</td>
+                                </tr>
+                                <tr>
+                                    <td>005</td>
+                                    <td>Task 5</td>
+                                </tr> -->
+                            </table>
+                        </li>
                     </ul>
                 </div>
             </div>
             <script>
-                $.getJSON('http://api.open-notify.org/astros.json', function (data) {
-                    $(data.people).each(function (key, value) {
-                        // console.log(key, value);
-                        $('#task-list').append(`
-                            <li class="list-group-item">
-                                ${value.name}
-                            </li>
-                        `);
-                    });
+                $('#table').bootstrapTable({
+                    columns: [
+                        { field: "col1", title: "Task code" },
+                        { field: "col2", title: "Name" },
+                    ],
+                    data: [
+                        {
+                            col1: "001",
+                            col2: "Task 1",
+                        },
+                        {
+                            col1: "002",
+                            col2: "Task 2",
+                        },
+                        {
+                            col1: "003",
+                            col2: "Task 3",
+                        },
+                        {
+                            col1: "004",
+                            col2: "Task 4",
+                        },
+                        {
+                            col1: "005",
+                            col2: "Task 5",
+                        },
+                    ],
                 });
 
-                $("#myInput").keyup(function () {
-                    var filter, li;
-                    filter = $("#myInput").val().toUpperCase(); //get search input
-                    li = $("#task-list li");
-                    $(li).each(function (key, item) {
-                        if (item.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            item.style.display = "";
-                            if (filter.length > 0) {
-                            }
-                        } else {
-                            item.style.display = "none"
-                        }
+                $('#table').on('click-row.bs.table', function (item, $element, field) {
+                    $.each(field, function (key, value) {
+                        $('.text-danger').removeClass('text-danger');
+                        $('.font-weight-bold').removeClass('font-weight-bold');
+                        $(this).addClass("text-danger font-weight-bold");
                     });
+                    $.each($element, function (key, value) {
+                        $('#addProjectForm').attr('action', "/" + value).submit();
+                    })
                 });
-
             </script>
             <!-- ./sidebar -->
 

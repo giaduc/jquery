@@ -101,7 +101,7 @@
                                         <div class="form-group row">
                                             <label for="projectCode" class="col-3 col-form-label">Project code</label>
                                             <div class="col-9">
-                                                <select id="projectCode" class="form-control" name="projectCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose project.">
+                                                <select id="projectCode" class="form-control" name="projectCode">
                                                     <option value="">Choose...</option>
                                                     <option value="Project1">Project 1</option>
                                                     <option value="Project2">Project 2</option>
@@ -111,7 +111,7 @@
                                         <div class="form-group row">
                                             <label for="taskCode" class="col-3 col-form-label">Task code</label>
                                             <div class="col-9">
-                                                <select id="taskCode" class="form-control" name="taskCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose task.">
+                                                <select id="taskCode" class="form-control" name="taskCode">
                                                     <option value="">Choose...</option>
                                                     <option value="Task1">Task 1</option>
                                                     <option value="Task2">Task 2</option>
@@ -121,8 +121,7 @@
                                         <div class="form-group row">
                                             <label for="timeWork" class="col-3 col-form-label">Time work</label>
                                             <div class="col-9">
-                                                <input type="text" class="form-control" id="timeWork" name="txt_timeWork" placeholder="Hour" data-validation="[NOTEMPTY, INTEGER]"
-                                                    data-validation-message="Please enter working time.">
+                                                <input type="text" class="form-control" id="timeWork" name="txt_timeWork" placeholder="Hour">
                                             </div>
                                         </div>
                                     </div>
@@ -131,18 +130,17 @@
                                             <button class="btn btn-outline-danger ml-2" type="button">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
-                                            <button id="toggle-note" class="btn btn-outline-dark  ml-2" type="button" data-toggle="collapse" data-target="#report-note"
-                                                aria-controls="report-note" aria-expanded="false" aria-label="Toggle report note">
+                                            <button class="btn btn-outline-dark  ml-2 btn-toggle-note" type="button" data-toggle="collapse" data-target="#report-note">
                                                 <i class="fas fa-minus"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div id="report-note">
+                                <div id="report-note" class="collapse show">
                                     <div class="form-group">
                                         <label for="content">Note</label>
                                         <div class="col-12">
-                                            <textarea class="form-control" rows="10" cols="" id="content" name="txt_note" data-validation="[L>=10, NOTEMPTY]" data-validation-message="Please enter note. Not must be at least 10 characters."></textarea>
+                                            <textarea class="form-control" rows="10" cols="" id="content" name="txt_note"></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -158,104 +156,102 @@
                     </div>
                 </div>
                 <script>
+                    $(function () {
 
-                    $.validate({
-                        submit: {
-                            settings: {
-                                form: '#addReportForm',
-                                clear: false,
-                                insertion: 'append',
-                                allErrors: true,
-                                errorClass: 'is-invalid',
-                                errorListClass: 'invalid-feedback error-list',
-                                inputContainer: '.form-group',
-                                display: 'inline',
-                                scrollToError: true
-                            },
-                            callback: {
-                                onError: function (error) {
-                                    // alert(error.toString());
-                                }
-                            }
+                        // btnToggleClick
+                        function btnToggleClick() {
+                            console.log(this);
+                            var toggle_id = $(this.children[0]);
+                            console.log(toggle_id);
+                            toggle_id.toggleClass("fa-plus fa-minus");
                         }
-                    });
 
-                    $(document).ready(function () {
-
-                        $('#report-note').on('hidden.bs.collapse', function () {
-                            $('#toggle-note').children().replaceWith('<i class="fas fa-plus"></i>');
-                        });
-
-                        $('#report-note').on('shown.bs.collapse', function () {
-                            $('#toggle-note').children().replaceWith('<i class="fas fa-minus"></i>');
-                        });
-
-
-                        $("#addWork").click(function () {
-                            $("#list-report").append(`
-
-                        <div class="report-form">
-                        <form id="addReportForm" method="post">
-                            <div class="report-form-body">
-                                <div class="row">
-                                    <div class="col-10">
-                                        <div class="form-group row">
-                                            <label for="projectCode" class="col-3 col-form-label">Project code</label>
-                                            <div class="col-9">
-                                                <select id="projectCode" class="form-control" name="projectCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose project.">
-                                                    <option value="">Choose...</option>
-                                                    <option value="Project1">Project 1</option>
-                                                    <option value="Project2">Project 2</option>
-                                                </select>
+                        // addTask function
+                        function addTask() {
+                            let $listReport = $("#list-report");
+                            $listReport.append(`
+                                <div class="report-form">
+                                    <form id="addReportForm" method="post">
+                                        <div class="report-form-body">
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div class="form-group row">
+                                                        <label for="projectCode" class="col-3 col-form-label">Project code</label>
+                                                        <div class="col-9">
+                                                            <select id="projectCode" class="form-control" name="projectCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose project.">
+                                                                <option value="">Choose...</option>
+                                                                <option value="Project1">Project 1</option>
+                                                                <option value="Project2">Project 2</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="taskCode" class="col-3 col-form-label">Task code</label>
+                                                        <div class="col-9">
+                                                            <select id="taskCode" class="form-control" name="taskCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose task.">
+                                                                <option value="">Choose...</option>
+                                                                <option value="Task1">Task 1</option>
+                                                                <option value="Task2">Task 2</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="timeWork" class="col-3 col-form-label">Time work</label>
+                                                        <div class="col-9">
+                                                            <input type="text" class="form-control" id="timeWork" name="txt_timeWork" placeholder="Hour" data-validation="[NOTEMPTY, INTEGER]"
+                                                                data-validation-message="Please enter working time.">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="row">
+                                                        <button class="btn btn-outline-danger ml-2">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                        <button class="btn btn-outline-dark ml-2 btn-toggle-note-inside" type="button">
+                                                            <i class="fas fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="content">Note</label>
+                                                <div class="col-12">
+                                                    <textarea class="form-control" rows="10" cols="" id="content" name="txt_note" data-validation="[L>=10, NOTEMPTY]" data-validation-message="Please enter note. Not must be at least 10 characters."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button type="button" id="addWork" class="btn btn-outline-dark">
+                                                        Add work
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="taskCode" class="col-3 col-form-label">Task code</label>
-                                            <div class="col-9">
-                                                <select id="taskCode" class="form-control" name="taskCode" data-validation="[NOTEMPTY]" data-validation-message="Please choose task.">
-                                                    <option value="">Choose...</option>
-                                                    <option value="Task1">Task 1</option>
-                                                    <option value="Task2">Task 2</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="timeWork" class="col-3 col-form-label">Time work</label>
-                                            <div class="col-9">
-                                                <input type="text" class="form-control" id="timeWork" name="txt_timeWork" placeholder="Hour" data-validation="[NOTEMPTY, INTEGER]"
-                                                    data-validation-message="Please enter working time.">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="row">
-                                            <button class="btn btn-outline-danger ml-2">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                            <button class="btn btn-outline-dark  ml-2">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <label for="content">Note</label>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="10" cols="" id="content" name="txt_note" data-validation="[L>=10, NOTEMPTY]" data-validation-message="Please enter note. Not must be at least 10 characters."></textarea>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <button type="button" id="addWork" class="btn btn-outline-dark">
-                                            Add work
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                             `);
-                        });
+                            let $btnToggleNoteInside = $(".btn-toggle-note-inside");
+                            // $btnToggleNoteInside.on("click", btnToggleClick);
+                            $btnToggleNoteInside.each(function(){
+                                console.log("each button : " + this);
+                                $(this).on("click", btnToggleClick);
+                            })
+                            console.log("some bug here");
+                            
+                        }
+
+                        // on btnAddWork click
+                        let $btnAddWork = $("#addWork");
+                        $btnAddWork.on("click", addTask);
+
+                        // on btnToggleNote click
+                        let $btnToggleNote = $(".btn-toggle-note");
+                        $btnToggleNote.each(function(){
+                            $(this).on("click", btnToggleClick);
+                        })
+                        // $btnToggleNote.on("click", btnToggleClick);
+
                     });
 
 
